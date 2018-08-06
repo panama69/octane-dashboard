@@ -49,11 +49,11 @@ curl -c cookies -X POST http://${HOST}:${PORT}/authentication/sign_in \
    -H 'Content-Type: application/json' \
    -d @credentials.json
 
+echo "Processing:"
 for file in favorites/*.json
 do
-   echo "Processing:"
    if [[ -f ${file} ]]; then
-      echo \t${file}
+      echo -e "\t${file}"
       curl -b cookies -s -o /dev/null -X POST http://${HOST}:${PORT}/api/shared_spaces/${SHAREDSPACE}/workspaces/${WORKSPACE}/favorites \
          -H 'Content-Type: application/json' \
          -H 'HPECLIENTTYPE: HPE_REST_API_TECH_PREVIEW' \
